@@ -1,0 +1,6 @@
+
+.codegpt
+.env
+routes_new.js
+_tests
+node_modules/

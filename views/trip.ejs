@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include("partials/head.ejs") %>
+    </head>
+
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+        <header>
+            <%- include('partials/header.ejs') %>
+        </header>
+
+        <div class="container d-flex justify-content-center pt-1">
+            <% if (availableBuses.length > 0) { %>
+                <h3 style="color: black; margin-top:8rem;">Here are buses from <%= departure %> to <%= destination %>:</h3>
+                <table class="table table-stripped" style="color: black;">
+                    <thead style="font-size: larger;" >
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">Departing</th>
+                        <th scope="col">Arriving</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Available</th>
+                    </thead>
+                    <tbody>
+                        <% availableBuses.forEach(bus => { %>
+                        <tr>
+                            <td> <%= bus.departure_stop %> </td>
+                            <td> <%= bus.arrival_stop %> </td>
+                            <td> <%= bus.departure_time %> </td>
+                            <td> <%= bus.arrival_time %> </td>
+                            <td> <%= bus.price %> </td>
+                            <td>
+                                <% if (bus.booking_status === "Available") { %>
+                                    <a href="#">BOOK NOW</a>
+                                <% } else { %>
+                                    FULL
+                                <% } %>
+                            </td>
+                        <% }) %>
+                        </tr>
+                    </tbody>
+                    <% } else { %>
+                        <h3 style="color: black; margin-top:8rem;">No buses available from <%= departure %> to <%= destination %>.</h3>
+                    <% }; %>
+    
+                </table>    
+        </div>
+        
+        <footer>
+            <%- include('partials/footer.ejs') %>
+        </footer>
+    </body>
+
+</html>

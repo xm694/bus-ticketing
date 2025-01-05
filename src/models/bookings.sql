@@ -1,0 +1,15 @@
+CREATE TABLE bookings (
+    booking_id BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
+    route_id BIGINT(20) NOT NULL,
+    u_id BIGINT(20) NOT NULL,
+    bus_id BIGINT(20) NOT NULL,
+    dep_stop BIGINT(20) NOT NULL,
+    arr_stop BIGINT(20) NOT NULL,
+    price INT NOT NULL,
+    status ENUM('Confirmed', 'Pending', 'Cancelled') NOT NULL,
+    FOREIGN KEY (route_id) REFERENCES routes(route_id),
+    FOREIGN KEY (u_id) REFERENCES users(u_id),
+    FOREIGN KEY (bus_id) REFERENCES buses(bus_id),
+    FOREIGN KEY (dep_stop) REFERENCES stops(stop_id),
+    FOREIGN KEY (arr_stop) REFERENCES stops(stop_id),
+)

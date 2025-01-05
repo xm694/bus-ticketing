@@ -1,0 +1,6 @@
+CREATE TABLE stops (
+    stop_id BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL
+)
